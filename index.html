@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM - 隨機抽取名稱，顯示到指定標簽內部</title>
+    <style>
+        h3 {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        div {
+            width: 500px;
+            height: 30px;
+            margin: 0 auto;
+            background-color: #eee;
+            line-height: 30px;
+            text-align: center;
+
+        }
+        p {
+            width: 500px;
+            height: 500px;
+            margin: 0 auto;
+        }
+        img {
+            width: 100%;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <h3>今天週未喝什麼呢？</h3>
+    <div>
+
+    </div>
+    <p><img src="./images/store_00.jpg" alt=""></p>
+
+
+    <script>
+        //設定數組資料
+        let arr = ['麻谷', '茶湯會', '五邁鄉', '小泊良茶', '得正', '八曜和茶', 'Millksho', 'ComeBuy', '可不可', '喫茶小鋪', '大茗']
+        // function 亂數數值
+        function getV(min, max) {
+            let random = Math.floor(Math.random() * (max - min)+min)
+            console.log(random)
+
+            return random
+        }
+
+        let ans = getV(0, arr.length)
+        //提取元素
+        let div = document.querySelector('div')
+        let pic = document.querySelector('img')
+
+        pic.src = `./images/store_${ans}.jpg`
+        div.innerText = arr[ans]
+
+        // document.write (`${arr[ans]}`)
+
+
+    </script>
+</body>
+
+</html>
