@@ -11,25 +11,23 @@
             color: #333;
             background-color: #fff;
         }
+
         .btn {
             width: 100%;
-            background-color:#ff5e00;
+            background-color: #ff5e00;
 
         }
 
-        span {
-            margin-top: 10px;
-
+        button {
             margin-left: 15px;
             padding: 2px 10px;
             background-color: #fff;
             font-size: 14px;
             border: 1px solid #333;
             border-radius: 5px;
-            width: 100px;
-            line-height: 30px;
+            width: 150px;
+            line-height: 20px;
             vertical-align: middle;
-            cursor: pointer;
         }
 
         /* 清除浮动 */
@@ -80,9 +78,9 @@
 
 <body>
     <!-- DOM - 隨機抽取名稱，顯示到指定標簽內部 -->
-    <h3>沒想到週末喝什麼？就來玩一下吧！</h3>
+    <h3>沒想到週末喝什麼？就來玩一下吧！</h3><button class="count">倒數計時：20</button>
     <div class="btn">
-        <span class="start">開始</span><span class="end">結束</span>
+        <button class="start">開始</button><button class="end">結束</button>
     </div>
     <div class="store">
 
@@ -103,9 +101,6 @@
             return random
         }
 
-
-
-
         let ans = 0
         //提取元素
         let div = document.querySelector('.store')
@@ -113,25 +108,55 @@
         let start = document.querySelector('.start')
         let end = document.querySelector('.end')
         let timer = 0
+        let count = document.querySelector('.count')
+
+        //click start事件 間歇函數
         //click start事件 間歇函數
         start.addEventListener('click', function () {
             timer = setInterval(function () {
-                let ans = getV(0, arr.length - 1)
+                ans = getV(0, arr.length - 1)
+
                 pic.style.display = 'none'
                 pic.src = `./images/store_${ans}.jpg`
-
                 div.innerText = arr[ans]
+
 
             }, 50)
         })
         //click end事件 clear timer
         end.addEventListener('click', function () {
             pic.style.display = 'block'
-
-
+            clearInterval(iNum)
             clearInterval(timer)
+            start.disabled = true
+            end.disabled = true
+
+
 
         })
+
+        // click start事件 倒數計時 按鈕無效 自動選取一個
+        let i = 20
+        let iNum = setInterval(function () {
+            count.innerHTML = (`倒數計時：${i}`)
+
+
+            if (i === 0) {
+                pic.style.display = 'block'
+                pic.src = `./images/store_${ans}.jpg`
+
+                div.innerText = arr[ans]
+                clearInterval(iNum)
+                clearInterval(timer)
+                start.disabled = true
+                end.disabled = true
+
+
+            } else {
+                i--
+            }
+        }, 1000)
+
 
         // div.innerText = arr[ans]
 
