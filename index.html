@@ -25,7 +25,7 @@
             font-size: 14px;
             border: 1px solid #333;
             border-radius: 5px;
-            width: 120px;
+            width: 80px;
             line-height: 20px;
             vertical-align: middle;
         }
@@ -72,13 +72,18 @@
             width: 100%;
             display: none;
         }
+        span {
+            font-size: 12px;
+            font-weight: 300;
+            color: #333;
+        }
     </style>
 
 </head>
 
 <body>
     <!-- DOM - 隨機抽取名稱，顯示到指定標簽內部 -->
-    <h3>沒想到週末喝什麼？就來玩一下吧！</h3><button class="count">倒數計時：20</button>
+    <h3>沒想到週末喝什麼？就來玩一下吧！<span class="count">倒數計時:20</span></h3>
     <div class="btn">
         <button class="start">開始</button><button class="end">結束</button>
     </div>
@@ -138,7 +143,7 @@
         // click start事件 倒數計時 按鈕無效 自動選取一個
         let i = 20
         let iNum = setInterval(function () {
-            count.innerHTML = (`倒數計時：${i}`)
+            count.innerHTML = (`倒數計時:${i}`)
 
 
             if (i === 0) {
