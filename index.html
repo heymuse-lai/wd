@@ -23,12 +23,19 @@
         }
         p {
             width: 100%;
-            height: 500px;
             margin: 0 auto;
         }
         img {
             width: 100%;
-
+            display: none;
+        }
+        .btn {
+            border: 1px solid #ddd;
+        }
+        button {
+            margin-left: 15px;
+            width: 100px;
+            height: 30px;
         }
 
     </style>
@@ -36,8 +43,11 @@
 </head>
 
 <body>
-    <h3>今天週未喝什麼呢？</h3>
-    <div>
+    <h3>今天週未喝什麼呢？    </h3>
+    <div class="btn">
+        <button class="start">開始</button><button class="end">結束</button>
+    </div>
+    <div class="store">
 
     </div>
     <p><img src="./images/store_00.jpg" alt=""></p>
@@ -47,6 +57,8 @@
         //設定數組資料
         let arr = ['麻谷', '茶湯會', '五邁鄉', '小泊良茶', '得正', '八曜和茶', 'Millksho', 'ComeBuy', '可不可', '喫茶小鋪', '大茗']
         // function 亂數數值
+        let random = 0
+
         function getV(min, max) {
             let random = Math.floor(Math.random() * (max - min)+min)
             console.log(random)
@@ -54,13 +66,37 @@
             return random
         }
 
-        let ans = getV(0, arr.length)
-        //提取元素
-        let div = document.querySelector('div')
-        let pic = document.querySelector('img')
 
-        pic.src = `./images/store_${ans}.jpg`
-        div.innerText = arr[ans]
+
+
+        let ans = 0
+        //提取元素
+        let div = document.querySelector('.store')
+        let pic = document.querySelector('img')
+        let start = document.querySelector('.start')
+        let end =document.querySelector('.end')
+        let timer = 0
+        //click start事件 間歇函數
+        start.addEventListener('click', function(){
+            timer = setInterval (function(){
+                let ans = getV(0,arr.length-1)
+                pic.style.display = 'none'
+                pic.src = `./images/store_${ans}.jpg`
+
+                div.innerText = arr[ans]
+
+            }, 50)
+        })
+        //click end事件 clear timer
+        end.addEventListener('click', function(){
+            pic.style.display = 'block'
+
+
+            clearInterval(timer)
+
+        })
+
+        // div.innerText = arr[ans]
 
         // document.write (`${arr[ans]}`)
 
