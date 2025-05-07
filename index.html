@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>週未喝什麼呢？</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         h3 {
             width: 100%;
             margin-top: 30px;
@@ -21,23 +27,26 @@
             text-align: center;
 
         }
+
         p {
             width: 100%;
             margin: 0 auto;
         }
+
         img {
             width: 100%;
             display: none;
         }
+
         .btn {
             border: 1px solid #ddd;
         }
+
         button {
             margin-left: 15px;
             width: 100px;
             height: 30px;
         }
-
     </style>
 
 </head>
@@ -61,7 +70,7 @@
         let random = 0
 
         function getV(min, max) {
-            let random = Math.floor(Math.random() * (max - min)+min)
+            let random = Math.floor(Math.random() * (max - min) + min)
             console.log(random)
 
             return random
@@ -75,12 +84,12 @@
         let div = document.querySelector('.store')
         let pic = document.querySelector('img')
         let start = document.querySelector('.start')
-        let end =document.querySelector('.end')
+        let end = document.querySelector('.end')
         let timer = 0
         //click start事件 間歇函數
-        start.addEventListener('click', function(){
-            timer = setInterval (function(){
-                let ans = getV(0,arr.length-1)
+        start.addEventListener('click', function () {
+            timer = setInterval(function () {
+                let ans = getV(0, arr.length - 1)
                 pic.style.display = 'none'
                 pic.src = `./images/store_${ans}.jpg`
 
@@ -89,7 +98,7 @@
             }, 50)
         })
         //click end事件 clear timer
-        end.addEventListener('click', function(){
+        end.addEventListener('click', function () {
             pic.style.display = 'block'
 
 
