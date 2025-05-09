@@ -118,6 +118,8 @@
         //click start事件 間歇函數
         //click start事件 間歇函數
         start.addEventListener('click', function () {
+            start.disabled = true
+
             timer = setInterval(function () {
                 ans = getV(0, arr.length - 1)
 
@@ -133,7 +135,6 @@
             pic.style.display = 'block'
             clearInterval(iNum)
             clearInterval(timer)
-            start.disabled = true
             end.disabled = true
 
 
