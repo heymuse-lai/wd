@@ -96,8 +96,13 @@
         let tips = document.querySelector('.tips')
         // let now = +new Date()
         let test = +new Date('2025-7-11 23:59:59')
+        let day = document.querySelector('#day')
+        let hour = document.querySelector('#hour')
+        let minutes = document.querySelector('#minutes')
+        let scond = document.querySelector('#scond')
+
         let count =( test - date) / 1000
-        console.log(+new Date());
+        
         
         let d = parseInt(count / 60 / 60 / 24 )
         d = d < 10 ? '0' + d : d
@@ -109,11 +114,7 @@
         let s = parseInt(count % 60  )
         s = s < 10 ? '0' + s : s
 
-        console.log(count);
-        let day = document.querySelector('#day')
-        let hour = document.querySelector('#hour')
-        let minutes = document.querySelector('#minutes')
-        let scond = document.querySelector('#scond')
+        
         day.innerHTML = d
         hour.innerHTML = h
         minutes.innerHTML = m
